@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerControler : MonoBehaviour
 {
     public float moveSpeed;
-   // public Rigidbody rb;
+    // public Rigidbody rb;
     public float jumpForce;
     public CharacterController controller;
 
@@ -23,12 +23,16 @@ public class PlayerControler : MonoBehaviour
     public float knockBackForce;
     public float knockBackTime;
     private float knockBackCounter;
-    
+    GameObject currFloor;
+
+    [SerializeField] float fadeSpeed;
+    [SerializeField] float disappearTime;
+    Color startColor;
     // use tis for initialization
     void Start()
     {
-      //  rb= GetComponent<Rigidbody>();
-      controller= GetComponent<CharacterController>();
+        //  rb= GetComponent<Rigidbody>();
+        controller = GetComponent<CharacterController>();
     }
 
 
@@ -65,7 +69,7 @@ public class PlayerControler : MonoBehaviour
             knockBackCounter -= Time.deltaTime;
         }
 
-        moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale* Time.deltaTime);
+        moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
         controller.Move(moveDirection * Time.deltaTime);
 
         //Move the player in different directions based on camera look direction
@@ -76,10 +80,10 @@ public class PlayerControler : MonoBehaviour
             Quaternion newRotation = Quaternion.LookRotation(new Vector3(moveDirection.x, 0f, moveDirection.z));
             playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, newRotation, rotateSpeed * Time.deltaTime);
         }
-        
-       // Anim.SetBool("isGround", controller.isGrounded);
-       // Anim.SetFloat("Speed", (Mathf.Abs(Input.GetAxis("Vertical")) * Mathf.Abs(Input.GetAxis("Horizontal"))));
-    
+
+        // Anim.SetBool("isGround", controller.isGrounded);
+        // Anim.SetFloat("Speed", (Mathf.Abs(Input.GetAxis("Vertical")) * Mathf.Abs(Input.GetAxis("Horizontal"))));
+
     }
 
     public void Knockback(Vector3 direction)
@@ -89,4 +93,52 @@ public class PlayerControler : MonoBehaviour
         moveDirection = direction * knockBackForce;
         moveDirection.y = knockBackForce;
     }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("dFloor"))
+        {
+            currFloor = other.gameObject;
+            startColor = currFloor.GetComponent<Renderer>().material.color;
+            StartCoroutine(FadeOut());
+
+        }
+        IEnumerator FadeOut()
+        {
+            while (currFloor.GetComponent<Renderer>().material.color.a >= .5f)
+            {
+                Color startingColor = currFloor.GetComponent<Renderer>().material.color;
+                float fadeAmount = startingColor.a - (fadeSpeed * Time.deltaTime);
+
+                startingColor = new Color(startingColor.r, startingColor.g, startingColor.b, fadeAmount);
+                currFloor.GetComponent<Renderer>().material.color = startingColor;
+                if (currFloor.GetComponent<Renderer>().material.color.a <= .5f)
+                {
+                    StartCoroutine(Disappear());
+                }
+                yield return null;
+            }
+
+        }
+
+        //disappearing platforms
+        IEnumerator Disappear()
+        {
+            print("Trigger Disappear");
+            currFloor.transform.position = new Vector3(currFloor.transform.position.x, currFloor.transform.position.y - 1f, currFloor.transform.position.z);
+            currFloor.SetActive(false);
+            yield return new WaitForSeconds(disappearTime);
+            StartCoroutine(Appear());
+        }
+        IEnumerator Appear()
+        {
+            yield return new WaitForSeconds(1f);
+            print("activate");
+            currFloor.SetActive(true);
+            currFloor.transform.position = new Vector3(currFloor.transform.position.x, currFloor.transform.position.y + 1f, currFloor.transform.position.z);
+            currFloor.GetComponent<Renderer>().material.color = new Color(startColor.r, startColor.g, startColor.b, 1);
+        }
+
+    }
 }
+

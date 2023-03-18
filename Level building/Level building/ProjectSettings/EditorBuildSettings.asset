@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/on process.unity
+    path: Assets/easy level.unity
     guid: 1eaaaed3f19b1414186c9c0bdafc77a0
   - enabled: 1
     path: Assets/VictoryScene.unity
