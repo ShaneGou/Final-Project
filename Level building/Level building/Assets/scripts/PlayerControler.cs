@@ -23,8 +23,9 @@ public class PlayerControler : MonoBehaviour
     public float knockBackForce;
     public float knockBackTime;
     private float knockBackCounter;
+    
+    
     GameObject currFloor;
-
     [SerializeField] float fadeSpeed;
     [SerializeField] float disappearTime;
     Color startColor;
