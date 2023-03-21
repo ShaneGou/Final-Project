@@ -29,7 +29,8 @@ public class Checkpoint : MonoBehaviour
 
     public void CheckpointOn()
     {
-       Checkpoint[] checkpoints = FindObjectsOfType<Checkpoint>();
+        Checkpoint[] checkpoints = FindObjectsOfType<Checkpoint>();
+
         foreach (Checkpoint cp in checkpoints) 
         {
             cp.CheckpointOff();
@@ -42,6 +43,7 @@ public class Checkpoint : MonoBehaviour
     {
         theRend.material = cpOff;
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag.Equals("Player"))
