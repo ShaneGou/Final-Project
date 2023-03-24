@@ -79,6 +79,12 @@ public class HealthManager : MonoBehaviour
                 isFadeFromBlack = false;
             }
         }
+
+        // respawn if player falls off the world
+        if (thePlayer.transform.position.y < -20)
+        {
+            Respawn();
+        }
     }
 
     public void HurtPlayer(int damage, Vector3 direction)

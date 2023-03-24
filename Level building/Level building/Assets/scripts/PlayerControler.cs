@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerControler : MonoBehaviour
 {
+
+    // [SerializeField] LayerMask groundLayer;
     public float moveSpeed;
     // public Rigidbody rb;
     public float jumpForce;
@@ -23,12 +25,15 @@ public class PlayerControler : MonoBehaviour
     public float knockBackForce;
     public float knockBackTime;
     private float knockBackCounter;
+
+    // private float checkForGroundDistance = 0.2f;
+    // private bool onGround = false;
     
     GameObject currFloor;
     [SerializeField] float fadeSpeed;
     [SerializeField] float disappearTime;
     Color startColor;
-    // use tis for initialization
+    // use this for initialization
     void Start()
     {
         //  rb= GetComponent<Rigidbody>();
@@ -47,6 +52,10 @@ public class PlayerControler : MonoBehaviour
 
         // moveDirection = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, moveDirection.y, Input.GetAxis("Vertical") * moveSpeed);
 
+        // onGround = CheckForGround();
+        // print($"Is On Ground: {onGround}");
+        // print($"Position: {transform.position}");
+        print($"Player is grounded: {controller.isGrounded}");
 
         if (knockBackCounter <= 0)
         {
@@ -137,6 +146,7 @@ public class PlayerControler : MonoBehaviour
             yield return new WaitForSeconds(disappearTime);
             StartCoroutine(Appear());
         }
+
         IEnumerator Appear()
         {
             yield return new WaitForSeconds(1f);
@@ -147,5 +157,26 @@ public class PlayerControler : MonoBehaviour
         }
 
     }
+
+    // private RaycastHit CheckBelow() {
+    //     RaycastHit hit;
+    //     Physics.Raycast(transform.position + Vector3.up * 0.05f, Vector3.down, out hit, 20, groundLayer, QueryTriggerInteraction.Ignore);
+
+    //     return hit;
+    // }
+
+    // private bool CheckForGround() {
+
+    //     RaycastHit rayTarget = CheckBelow();
+
+    //     // Debug.DrawLine(transform.position + Vector3.up * 0.05f, transform.position + Vector3.down * checkForGroundDistance, Color.cyan);
+
+    //     if (rayTarget.distance < checkForGroundDistance) {
+    //         return true;
+    //     }
+
+    //     return false;
+    // }
+
 }
 

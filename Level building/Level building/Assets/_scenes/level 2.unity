@@ -5732,6 +5732,10 @@ PrefabInstance:
       propertyPath: m_SkinWidth
       value: 0.0001
       objectReference: {fileID: 0}
+    - target: {fileID: 3311053083460327229, guid: 4ac0db3ee6171e742887d50d54aa81b5, type: 3}
+      propertyPath: m_MinMoveDistance
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3311053083460327230, guid: 4ac0db3ee6171e742887d50d54aa81b5, type: 3}
       propertyPath: Anim
       value: 
@@ -7287,7 +7291,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5744336854688338532, guid: 38b05976221fe4d42a2cfd7c1f26ba8e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: -1.701
       objectReference: {fileID: 0}
     - target: {fileID: 5744336854688338532, guid: 38b05976221fe4d42a2cfd7c1f26ba8e, type: 3}
       propertyPath: m_LocalPosition.z

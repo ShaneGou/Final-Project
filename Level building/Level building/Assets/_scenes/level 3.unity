@@ -1811,6 +1811,10 @@ PrefabInstance:
       propertyPath: m_SkinWidth
       value: 0.0001
       objectReference: {fileID: 0}
+    - target: {fileID: 3311053083460327229, guid: 4ac0db3ee6171e742887d50d54aa81b5, type: 3}
+      propertyPath: m_MinMoveDistance
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3311053083460327230, guid: 4ac0db3ee6171e742887d50d54aa81b5, type: 3}
       propertyPath: Anim
       value: 
