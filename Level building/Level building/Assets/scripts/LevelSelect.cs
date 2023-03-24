@@ -7,7 +7,8 @@ public class LevelSelect : MonoBehaviour
 {
     [SerializeField] int levelNumber = 0;
 
-    public void OpenScene() {
+    public void OpenScene() 
+    {
         SceneManager.LoadScene(levelNumber, LoadSceneMode.Single);
     }
 }
