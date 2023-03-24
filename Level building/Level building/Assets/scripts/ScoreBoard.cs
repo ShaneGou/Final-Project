@@ -5,13 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class ScoreBoard : MonoBehaviour
 {
-   public static int score = 0;
-    static int scoreGoal = 20;
+    public static int score = 0;
+    static int scoreGoal = 30;
 
-    void OnGUI()
-    {
-        GUILayout.Box("score:" + score);
-    }
+    // void OnGUI()
+    // {
+    //     GUILayout.Box("score:" + score);
+    // }
 
     private void Update()
     {
@@ -22,6 +22,14 @@ public class ScoreBoard : MonoBehaviour
         }
     }
 
+    // public static int GetScore()
+    // {
+    //     return score;
+    // }
 
+    // public static int GetScoreGoal()
+    // {
+    //     return scoreGoal;
+    // }
 
 }

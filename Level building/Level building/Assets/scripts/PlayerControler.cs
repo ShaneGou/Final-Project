@@ -24,11 +24,6 @@ public class PlayerControler : MonoBehaviour
     public float knockBackTime;
     private float knockBackCounter;
     
-    // detect input
-    private float v;
-    private float h;
-
-    
     GameObject currFloor;
     [SerializeField] float fadeSpeed;
     [SerializeField] float disappearTime;
@@ -88,12 +83,6 @@ public class PlayerControler : MonoBehaviour
 
         // Anim.SetBool("isGround", controller.isGrounded);
 
-        // v = Mathf.Abs(Input.GetAxis("Vertical"));
-        // h = Mathf.Abs(Input.GetAxis("Horizontal"));
-
-        // print($"Vertical: {v}");
-        // print($"Horizontal: {h}");
-        // print($"Speed: {v + h}");
         // Anim.SetFloat("Speed", (Mathf.Abs(Input.GetAxis("Vertical")) * Mathf.Abs(Input.GetAxis("Horizontal"))));
         // Anim.SetFloat("Speed", (Mathf.Abs(Input.GetAxis("Vertical")) + Mathf.Abs(Input.GetAxis("Horizontal"))));
 
