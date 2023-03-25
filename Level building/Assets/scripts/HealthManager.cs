@@ -80,14 +80,20 @@ public class HealthManager : MonoBehaviour
             }
         }
 
+        // respawn if player falls off the world
+        if (thePlayer.transform.position.y < -20)
+        {
+            Respawn();
+        }
     }
 
     public void HurtPlayer(int damage, Vector3 direction)
     {
         if (invincibilityCounter <= 0)
         {
-
             currentHealth -= damage;
+
+            healthBar.SetHealth(currentHealth);
 
             if (currentHealth <= 0)
             {
@@ -95,7 +101,6 @@ public class HealthManager : MonoBehaviour
             }
             else
             {
-
                 thePlayer.Knockback(direction);
 
                 invincibilityCounter = invincibilityLength;
@@ -120,7 +125,7 @@ public class HealthManager : MonoBehaviour
     {
         isRespawning = true;
         thePlayer.gameObject.SetActive(false);
-       Instantiate(deathEffect, thePlayer.transform.position, thePlayer.transform.rotation);
+        Instantiate(deathEffect, thePlayer.transform.position, thePlayer.transform.rotation);
 
         yield return new WaitForSeconds(respawnLength);
         
@@ -128,22 +133,27 @@ public class HealthManager : MonoBehaviour
 
         yield return new WaitForSeconds(waitForFade);
         
-        isFadeToBlack= false;
-        isFadeFromBlack= true;
+        isFadeToBlack = false;
+        isFadeFromBlack = true;
         
-        isRespawning= false;
+        isRespawning = false;
+
+        thePlayer.transform.position = respawnPoint;
 
         thePlayer.gameObject.SetActive(true);
-        thePlayer.transform.position = respawnPoint;
+
         currentHealth = maxHealth;
+        healthBar.SetHealth(currentHealth);
 
         invincibilityCounter = invincibilityLength;
         playerRenderer.enabled = false;
         flashCounter = flashLength;
     }
+
     public void HealPlayer(int healAmount) {
     
         currentHealth += healAmount;
+        healthBar.SetHealth(currentHealth);
 
         if(currentHealth > maxHealth)
         {
