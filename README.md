@@ -13,6 +13,8 @@ Reference:
 https://docs.unity3d.com/ScriptReference/CharacterController.html
 https://www.youtube.com/watch?v=4HpC--2iowE 
 
+_____________________________________________
+
 Credits:
 Take coins:
 When the player get touch the coin it will vanish and count 1 gold (two scores)
@@ -24,6 +26,8 @@ https://www.youtube.com/watch?v=MKjEOVvU6ug
 (Unity take damage on collision)
 
 https://www.youtube.com/watch?v=YXm8F57nqNA
+
+_____________________________________________
 
 Models:
 Visual assets were free and sourced from the Unity Assets Store (https://assetstore.unity.com), retrieved as of 3/24/23. No modifications were made to the assets. See attributions below.
@@ -42,6 +46,8 @@ Environment Asset “LowPoly Environment Pack”
 https://assetstore.unity.com/packages/3d/environments/landscapes/lowpoly-environment-pack-99479
 by k0rveen
 License: https://unity.com/legal/as-terms
+
+_____________________________________________
 
 Sound:
 Audio for this project was sourced from soundcloud.com, retrieved as of 3/24/23. No modifications were made to the audio files. Thank you to the composers and sound designers. You’re cool. See attributions below.
