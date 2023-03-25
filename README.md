@@ -50,7 +50,7 @@ License: https://unity.com/legal/as-terms
 _____________________________________________
 
 Sound:
-Audio for this project was sourced from soundcloud.com, retrieved as of 3/24/23. No modifications were made to the audio files. Thank you to the composers and sound designers. You’re cool. See attributions below.
+Audio for this project was sourced from freesound.org, retrieved as of 3/24/23. No modifications were made to the audio files. Thank you to the composers and sound designers. You’re cool. See attributions below.
 
 Level 1 BGM “RPG/MMO Sounds » Retro Puzzle Music Loop”
 https://freesound.org/people/Sirkoto51/sounds/378110/
