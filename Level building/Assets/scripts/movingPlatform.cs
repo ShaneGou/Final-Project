@@ -15,10 +15,7 @@ public class movingPlatform : MonoBehaviour
         min = transform.position;
         max = transform.position;
     }
-    private void Update()
-    {
-
-    }
+    
     private void FixedUpdate()
     {
         PlatMovement();

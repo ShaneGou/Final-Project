@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
 {
-
     public int maxHealth;
     public int currentHealth;
 
@@ -29,34 +28,30 @@ public class HealthManager : MonoBehaviour
     public float waitForFade;
 
     public HealthBar healthBar;
-    // Start is called before the first frame update
+
     void Start()
     {
         currentHealth = maxHealth;
-
        
         healthBar.SetMaxHealth(maxHealth);
-
-        //thePlayer = FindObjectOfType<PlayerControler>();
 
         respawnPoint = thePlayer.transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(invincibilityCounter > 0)
+        if (invincibilityCounter > 0)
         {
             invincibilityCounter -= Time.deltaTime;
 
             flashCounter -= Time.deltaTime; 
-            if(flashCounter <= 0)
+            if (flashCounter <= 0)
             {
                 playerRenderer.enabled = !playerRenderer.enabled;
                 flashCounter = flashLength;
              }
 
-            if(invincibilityCounter <= 0)
+            if (invincibilityCounter <= 0)
             {
                 playerRenderer.enabled = true;
             }
@@ -65,7 +60,7 @@ public class HealthManager : MonoBehaviour
         if (isFadeToBlack)
         {
             blackScreen.color = new Color(blackScreen.color.r, blackScreen.color.g, blackScreen.color.b, Mathf.MoveTowards(blackScreen.color.a, 1f, fadeSpeed * Time.deltaTime));
-            if(blackScreen.color.a == 1f) 
+            if (blackScreen.color.a == 1f) 
             { 
                 isFadeToBlack = false;
             }
@@ -113,8 +108,6 @@ public class HealthManager : MonoBehaviour
     }
     public void Respawn()
     {
-        // thePlayer.transform.position = respawnPoint;
-        //currentHealth = maxHealth;
         if (!isRespawning)
         {
             StartCoroutine("RespawnCo");
@@ -155,11 +148,10 @@ public class HealthManager : MonoBehaviour
         currentHealth += healAmount;
         healthBar.SetHealth(currentHealth);
 
-        if(currentHealth > maxHealth)
+        if (currentHealth > maxHealth)
         {
             currentHealth = maxHealth;
         }
-    
     }
 
     public void SetSpawnPoint(Vector3 newPosition)

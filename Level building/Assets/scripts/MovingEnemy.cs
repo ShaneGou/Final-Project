@@ -15,10 +15,7 @@ public class MovingEnemy : MonoBehaviour
         min = transform.position;
         max = transform.position;
     }
-    private void Update()
-    {
 
-    }
     private void FixedUpdate()
     {
         MoveEnemy();
@@ -39,19 +36,4 @@ public class MovingEnemy : MonoBehaviour
             transform.position = new Vector3(Mathf.PingPong(Time.time * speed, max.x + range - min.x) + min.x, transform.position.y, transform.position.z);
         }
     }
-
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     if (other.gameObject.CompareTag("Player"))
-    //     {
-    //         other.gameObject.transform.parent.parent = this.transform;
-    //     }
-    // }
-    // private void OnTriggerExit(Collider other)
-    // {
-    //     if (other.gameObject.CompareTag("Player"))
-    //     {
-    //         other.transform.parent.parent = null;
-    //     }
-    // }
 }

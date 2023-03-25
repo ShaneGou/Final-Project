@@ -33,7 +33,6 @@ public class PlayerControler : MonoBehaviour
         controller = GetComponent<CharacterController>();
     }
 
-
     void Update()
     {
         if (knockBackCounter <= 0)

@@ -6,21 +6,10 @@ public class hurrtPlayer : MonoBehaviour
 {
     public int damageToGive = 1;
     public AudioClip hurtSound;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             Vector3 hitDirection = other.transform.position - transform.position;
             hitDirection = hitDirection.normalized;

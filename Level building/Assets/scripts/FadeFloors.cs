@@ -36,7 +36,6 @@ public class FadeFloors : MonoBehaviour
             }
             yield return null;
         }
-
     }
     IEnumerator Disappear()
     {

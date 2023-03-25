@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-
     public Transform target;
     public Vector3 offset;
     public bool useOffsetValues;
@@ -24,7 +23,7 @@ public class CameraController : MonoBehaviour
         pivot.transform.position = target.transform.position;
         pivot.transform.parent = null;
        
-        Cursor.lockState = CursorLockMode.Locked;// when get into the game can lhide the cursor
+        Cursor.lockState = CursorLockMode.Locked; // when get into the game can hide the cursor
     }
 
     void LateUpdate()
@@ -58,7 +57,7 @@ public class CameraController : MonoBehaviour
             pivot.rotation = Quaternion.Euler(360f + minViewAngle, 0, 0);
         }
 
-        //move the camera based on the current rotation of the target & the original offset
+        // move the camera based on the current rotation of the target & the original offset
         float desiredYAngle = pivot.eulerAngles.y;
         float desiredXAngle = pivot.eulerAngles.x;
         Quaternion rotation = Quaternion.Euler(desiredXAngle, desiredYAngle, 0);
@@ -68,7 +67,6 @@ public class CameraController : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, target.position.y -.5f, transform.position.z);
         }
-
 
         transform.LookAt(target);
     }
